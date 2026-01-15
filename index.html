@@ -1,260 +1,320 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Komal Madkar | Kathak Dancer</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
-<style>
-/* ===== GENERAL ===== */
-body {
-    font-family: 'Inter', sans-serif;
-    margin: 0;
-    padding: 0;
-    color: #222;
-    line-height: 1.6;
-    background: linear-gradient(180deg, #f7f4ef, #eef2f6);
-}
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Komal Madkar – Professional Kathak Dancer, Performer, Choreographer & Teacher based in India."/>
+  <title>Komal Madkar | Kathak Dancer</title>
 
-h1, h2, h3 {
-    font-family: 'Playfair Display', serif;
-    letter-spacing: 0.5px;
-    margin: 0;
-}
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 
-a {
-    color: #0073e6;
-    text-decoration: none;
-}
-a:hover { text-decoration: underline; }
+  <style>
+    :root {
+      --overlay: rgba(0,0,0,0.38);
+      --text: #f8f8f8;
+      --accent: #d4af37; /* gold accent for elegance */
+    }
 
-/* ===== NAVIGATION ===== */
-#top-nav {
-    position: sticky;
-    top: 0;
-    background: #fff;
-    z-index: 1000;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-}
-#top-nav ul {
-    display: flex;
-    justify-content: center;
-    list-style: none;
-    margin: 0;
-    padding: 10px 0;
-}
-#top-nav li { margin: 0 15px; }
-#top-nav a { text-decoration: none; font-weight: 500; }
+    * { box-sizing: border-box; margin:0; padding:0; }
 
-/* ===== HERO SECTION ===== */
-header {
-    position: relative;
-    background: url('images/hero-bg.jpg') no-repeat center center / contain;
-    min-height: 100vh;   /* fill full screen */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    color: #fff;
-    overflow: hidden;
-}
+    body {
+      margin: 0;
+      font-family: 'Inter', system-ui, sans-serif;
+      color: var(--text);
+      background: #000;
+      line-height: 1.7;
+    }
 
-.hero-overlay {
-    position: absolute;
-    inset: 0;
-    background: rgba(0,0,0,0.25); /* subtle dark overlay for text contrast */
-    z-index: 1;
-}
+    h1, h2, h3 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 500;
+      letter-spacing: 0.8px;
+    }
 
-.hero-content {
-    position: relative;
-    z-index: 2;
-}
+    a {
+      color: var(--accent);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    a:hover { color: #fff; }
 
-header h1 {
-    font-size: 3rem;
-    text-shadow: 2px 2px 6px rgba(0,0,0,0.3);
-    margin-bottom: 12px;
-}
-header p {
-    font-size: 1.2rem;
-    letter-spacing: 0.5px;
-    text-shadow: 1px 1px 4px rgba(0,0,0,0.3);
-}
+    /* Navigation */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      padding: 1.5rem 2rem;
+      display: flex;
+      justify-content: center;
+      gap: 2.5rem;
+      background: rgba(0,0,0,0.65);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    nav a {
+      font-size: 0.95rem;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      font-weight: 400;
+      padding: 0.5rem 0;
+      transition: all 0.3s;
+    }
+    nav a:hover { color: var(--accent); border-bottom: 2px solid var(--accent); }
 
-/* ===== SECTIONS ===== */
-section {
-    padding: 40px 20px;
-    max-width: 900px;
-    margin: 0 auto;
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.8s ease, transform 0.8s ease;
-}
+    /* Full-screen sections */
+    .fullscreen-section {
+      position: relative;
+      min-height: 100dvh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      padding: 6rem 1.5rem 4rem;
+    }
 
-section.visible {
-    opacity: 1;
-    transform: translateY(0);
-}
+    .bg-image {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      object-position: center;
+      z-index: 0;
+    }
 
-section:nth-of-type(even) { background: #fff4e6; }
-section:nth-of-type(odd) { background: #f3f6f9; }
+    .fullscreen-section::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: var(--overlay);
+      z-index: 1;
+    }
 
-section h2 {
-    font-size: 2rem;
-    color: #333;
-    border-bottom: 2px solid #eee;
-    padding-bottom: 8px;
-    margin-bottom: 20px;
-    text-align: center;
-}
+    .content-wrapper {
+      position: relative;
+      z-index: 2;
+      max-width: 960px;
+      width: 100%;
+      padding: 2.5rem 2rem;
+      background: rgba(0,0,0,0.28);
+      border-radius: 12px;
+      backdrop-filter: blur(4px);
+      border: 1px solid rgba(255,255,255,0.1);
+      text-align: center;
+    }
 
-section h3 { margin-top: 15px; }
+    .fullscreen-section h1 {
+      font-size: clamp(3.5rem, 9vw, 6.5rem);
+      margin-bottom: 1rem;
+      text-shadow: 0 4px 20px rgba(0,0,0,0.7);
+    }
 
-ul { list-style: disc inside; padding-left: 0; margin: 0; }
+    .fullscreen-section h2 {
+      font-size: clamp(2.4rem, 6vw, 4rem);
+      margin-bottom: 1.8rem;
+      color: var(--accent);
+    }
 
-.experience-item { margin-bottom: 15px; }
-.experience-item h3 { font-size: 1.3rem; margin-bottom: 4px; }
-.experience-item p { font-size: 0.95rem; color: #555; line-height: 1.5; }
+    .divider {
+      width: 80px;
+      height: 2px;
+      background: var(--accent);
+      margin: 1.5rem auto;
+      border-radius: 2px;
+    }
 
-/* ===== GALLERY ===== */
-.gallery {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 12px;
-}
-.gallery img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover; /* no cropping outside container, fills frame */
-    border-radius: 6px;
-    display: block;
-}
+    .fullscreen-section p, .fullscreen-section li {
+      font-size: 1.15rem;
+      max-width: 720px;
+      margin: 0 auto 1.2rem;
+    }
 
-/* ===== CONTACT ===== */
-#contact p { font-size: 0.95rem; margin-bottom: 6px; }
-#contact a { color: #0073e6; }
+    ul {
+      list-style: none;
+      padding: 0;
+      text-align: left;
+      max-width: 680px;
+      margin: 1.5rem auto;
+    }
+    li {
+      margin-bottom: 1rem;
+      position: relative;
+      padding-left: 1.8rem;
+    }
+    li::before {
+      content: "✦";
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-size: 1.1rem;
+    }
 
-/* ===== RESPONSIVE ===== */
-@media(max-width:600px){
-    header h1 { font-size: 2rem; }
-    header p { font-size: 1rem; }
-    section h2 { font-size: 1.6rem; }
-    .gallery { grid-template-columns: 1fr; }
-}
+    /* Contact icons */
+    .contact-links {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.8rem;
+      margin-top: 2rem;
+    }
+    .contact-link {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      font-size: 1.2rem;
+    }
+    .contact-icon {
+      width: 32px;
+      height: 32px;
+      fill: var(--accent);
+      transition: transform 0.3s, fill 0.3s;
+    }
+    .contact-link:hover .contact-icon {
+      fill: #fff;
+      transform: scale(1.15);
+    }
 
-/* ===== SMOOTH SCROLL ===== */
-html { scroll-behavior: smooth; }
+    footer {
+      text-align: center;
+      padding: 3rem 1.5rem;
+      font-size: 0.9rem;
+      color: #aaa;
+      background: #000;
+      border-top: 1px solid rgba(255,255,255,0.05);
+    }
 
-</style>
+    @media (max-width: 768px) {
+      nav { gap: 1.2rem; padding: 1rem; flex-wrap: wrap; font-size: 0.9rem; }
+      .content-wrapper { padding: 2rem 1.5rem; }
+      .contact-link { font-size: 1.1rem; }
+      .contact-icon { width: 28px; height: 28px; }
+    }
+  </style>
 </head>
 <body>
 
-<!-- NAVIGATION -->
-<nav id="top-nav">
-    <ul>
-        <li><a href="#about">About</a></li>
-        <li><a href="#performances">Performances</a></li>
-        <li><a href="#creatives">Creatives</a></li>
-        <li><a href="#teaching">Teaching</a></li>
-        <li><a href="#gallery">Gallery</a></li>
-        <li><a href="#contact">Contact</a></li>
-    </ul>
-</nav>
+  <nav aria-label="Main navigation">
+    <a href="#about">About</a>
+    <a href="#performances">Performances</a>
+    <a href="#creatives">Creatives</a>
+    <a href="#teaching">Teaching</a>
+    <a href="#contact">Contact</a>
+  </nav>
 
-<!-- HERO -->
-<header>
-    <div class="hero-overlay"></div>
-    <div class="hero-content">
-        <h1>Komal Madkar</h1>
-        <p>Kathak Dancer / Performer / Teacher</p>
+  <!-- Hero -->
+  <header class="fullscreen-section">
+    <img src="images/intro.jpg" alt="Komal Madkar in elegant Kathak pose" class="bg-image">
+    <div class="content-wrapper">
+      <h1>Komal Madkar</h1>
+      <p>Kathak Dancer  ·  Performer  ·  Choreographer  ·  Teacher</p>
     </div>
-</header>
+  </header>
 
-<!-- ABOUT -->
-<section id="about">
-    <h2>About</h2>
-    <p>Artistic and creative dancer with 7 years of experience in performance, choreography, and teaching. Classical dancer familiar with production management and strong choreography skills. Seeking exciting performance opportunities.</p>
-    <h3>Areas of Expertise:</h3>
-    <ul>
-        <li>Classical Dance - Kathak</li>
-        <li>Semi Classical</li>
-        <li>Indian Folk</li>
-        <li>Bollywood Routine</li>
-        <li>Choreography</li>
-        <li>Teaching</li>
-        <li>Performing</li>
-        <li>Workshops</li>
-        <li>Production Management</li>
-    </ul>
-</section>
-
-<!-- PERFORMANCES -->
-<section id="performances">
-    <h2>Performance Highlights</h2>
-    <ul>
-        <li>Danced alongside Hemamalini for GANGA at Pravasi Bharati National Event, Kumbh Mela Varanasi, Pune Festival, Siri Fort Delhi, Nagpur (Jan–Dec 2019)</li>
-        <li>Represented India at Ukraine Folklore Festival (Aug 2018)</li>
-        <li>Performed Maharashtra Folk Dance at Videsh Bhavan for USA Delegates (Sept 2019)</li>
-        <li>Performed under the concept 'Kathak Pravaha' in Mumbai, Devrukh, Jalgaon, Alibag, Pune</li>
-        <li>Performed at P. L. Despande Kala Academy Mumbai for Mahila Kala Mohotsav 2019 and 2020</li>
-        <li>Solo performance for Kathak Yatra "Voyage, Unending Story of Life" (Oct 2019)</li>
-        <li>Online solo performances on International NewStar (Bangladesh) & Harmony Music & Dance Institute (Sharjah)</li>
-        <li>Performed at Mood Indigo Fest IIT Powai (Dec 2017) & Udaan Festival IIT Powai</li>
-    </ul>
-</section>
-
-<!-- CREATIVES -->
-<section id="creatives">
-    <h2>Creatives / Production</h2>
-    <ul>
-        <li>Creative support for production "Naari" at P. L. Despande Kala Academy Mumbai, Mahila Kala Mahotsav 2021</li>
-        <li>Conducted dance sessions for underprivileged kids: "50 Outreach Dance Sessions" by NCPA Mumbai (Oct 2019)</li>
-        <li>Organized Kathak Carnival (April 2018) at IIT Powai along with Guru Ranjana Phadke</li>
-    </ul>
-</section>
-
-<!-- TEACHING -->
-<section id="teaching">
-    <h2>Teaching</h2>
-    <ul>
-        <li>Executive Mentor (Kathak Dance) at Artfills (online platform) – April 2021–present</li>
-        <li>Dance Instructor at Harsha International, Bangalore – LKG to 12th CBSE students (May 2022–Oct 2022)</li>
-        <li>Classical Dance Teacher at Prarambha Nrityashala (2016–present), Mayur's Dance Academy, Tejomaya Dance Academy</li>
-    </ul>
-</section>
-
-<!-- GALLERY -->
-<section id="gallery">
-    <h2>Gallery</h2>
-    <div class="gallery">
-        <img src="images/stage performance.jpg" alt="Komal Madkar performance">
-        <img src="images/ellora.jpg" alt="Komal Madkar dance">
-        <img src="images/marine drive.jpg" alt="Komal Madkar teaching">
+  <!-- About -->
+  <section id="about" class="fullscreen-section">
+    <img src="images/about.jpg" alt="Komal Madkar at Ellora Caves – inspired by ancient Indian art" class="bg-image">
+    <div class="content-wrapper">
+      <h2>About</h2>
+      <div class="divider"></div>
+      <p>Artistic Kathak exponent with over 7 years of immersive experience in performance, choreography, teaching, and production. Rooted in classical tradition yet open to semi-classical, folk, and contemporary expressions. Passionate about sharing the grace and storytelling of Kathak on meaningful stages.</p>
+      <ul>
+        <li>Classical Kathak</li>
+        <li>Semi-Classical & Thumri</li>
+        <li>Indian Folk Dances</li>
+        <li>Bollywood & Fusion Choreography</li>
+        <li>Teaching & Workshops</li>
+        <li>Stage Direction & Production</li>
+      </ul>
     </div>
-</section>
+  </section>
 
-<!-- CONTACT -->
-<section id="contact">
-    <h2>Contact</h2>
-    <p>Email: <a href="mailto:komal.madkar@gmail.com">komal.madkar@gmail.com</a></p>
-    <p>Instagram: <a href="https://instagram.com/komal_kathak" target="_blank">@komal_kathak</a></p>
-    <p>Instagram: <a href="https://instagram.com/nrtyamaytroupe" target="_blank">@nrtyamaytroupe</a></p>
-    <p>Facebook: <a href="https://facebook.com/komalmadkar" target="_blank">Komal Madkar</a></p>
-</section>
+  <!-- Performances -->
+  <section id="performances" class="fullscreen-section">
+    <img src="images/performances.jpg" alt="Komal Madkar performing Kathak on stage" class="bg-image">
+    <div class="content-wrapper">
+      <h2>Performance Highlights</h2>
+      <div class="divider"></div>
+      <p><strong>GANGA</strong> with Padma Vibhushan Smt. Hema Malini – Kumbh Mela Varanasi, Pune Festival, Siri Fort Delhi, Nagpur (2019)</p>
+      <p>Represented India at Ukraine International Folklore Festival (2018)</p>
+      <p>Maharashtra Folk for USA Delegates – Videsh Bhavan (2019)</p>
+      <p><em>Kathak Pravaha</em> series – Mumbai, Pune, Alibag, Jalgaon, Devrukh</p>
+      <p>Mahila Kala Mahotsav – P. L. Deshpande Kala Academy (2019, 2020)</p>
+      <p>Solo – <em>Voyage: Unending Story of Life</em> (2019)</p>
+      <p>Online internationals – NewStar Bangladesh, Harmony Sharjah</p>
+    </div>
+  </section>
 
-<!-- ===== JS FADE-IN ===== -->
-<script>
-const sections = document.querySelectorAll('section');
-function revealSections() {
-    const triggerBottom = window.innerHeight * 0.85;
-    sections.forEach(section => {
-        const sectionTop = section.getBoundingClientRect().top;
-        if (sectionTop < triggerBottom) section.classList.add('visible');
-    });
-}
-window.addEventListener('scroll', revealSections);
-window.addEventListener('load', revealSections);
-</script>
+  <!-- Creatives -->
+  <section id="creatives" class="fullscreen-section">
+    <img src="images/creatives.jpg" alt="Creative production moments – Kathak choreography and workshops" class="bg-image">
+    <div class="content-wrapper">
+      <h2>Creative & Production Work</h2>
+      <div class="divider"></div>
+      <p>Creative support – <em>Naari</em> production, Mahila Kala Mahotsav 2021</p>
+      <p>50+ outreach sessions for underprivileged children – NCPA Mumbai (2019)</p>
+      <p>Organized <em>Kathak Carnival</em> – IIT Bombay with Guru Ranjana Phadke (2018)</p>
+    </div>
+  </section>
+
+  <!-- Teaching -->
+  <section id="teaching" class="fullscreen-section">
+    <img src="images/teaching.jpg" alt="Komal Madkar teaching Kathak dance class" class="bg-image">
+    <div class="content-wrapper">
+      <h2>Teaching</h2>
+      <div class="divider"></div>
+      <p>Executive Kathak Mentor – Artfills online (2021–present)</p>
+      <p>Dance Instructor – Harsha International School, Bangalore (2022)</p>
+      <p>Classical Teacher – Prarambha Nrityashala (2016–present), Mayur’s & Tejomaya Academies</p>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="fullscreen-section">
+    <img src="images/contact.jpg" alt="Scenic artistic backdrop – connection & expression" class="bg-image">
+    <div class="content-wrapper">
+      <h2>Contact</h2>
+      <div class="divider"></div>
+      <p>Let's connect for performances, workshops, or collaborations.</p>
+
+      <div class="contact-links">
+        <a href="mailto:komal.madkar@gmail.com" class="contact-link">
+          <svg class="contact-icon" viewBox="0 0 24 24">
+            <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+          </svg>
+          komal.madkar@gmail.com
+        </a>
+
+        <a href="https://instagram.com/komal_kathak" target="_blank" rel="noopener" class="contact-link">
+          <svg class="contact-icon" viewBox="0 0 24 24">
+            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.225.273 2.647.12 7.005.062 8.285.048 8.693.048 12s.014 3.715.072 4.995c.153 4.358 2.575 6.78 6.933 6.933 1.28.058 1.688.072 4.947.072s3.667-.014 4.947-.072c4.358-.153 6.78-2.575 6.933-6.933.058-1.28.072-1.688.072-4.947s-.014-3.667-.072-4.947c-.153-4.358-2.575-6.78-6.933-6.933C15.667.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zm0 10.162a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 11-2.88 0 1.44 1.44 0 012.88 0z"/>
+          </svg>
+          @komal_kathak
+        </a>
+
+        <a href="https://instagram.com/nrtyamaytroupe" target="_blank" rel="noopener" class="contact-link">
+          <svg class="contact-icon" viewBox="0 0 24 24">
+            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.225.273 2.647.12 7.005.062 8.285.048 8.693.048 12s.014 3.715.072 4.995c.153 4.358 2.575 6.78 6.933 6.933 1.28.058 1.688.072 4.947.072s3.667-.014 4.947-.072c4.358-.153 6.78-2.575 6.933-6.933.058-1.28.072-1.688.072-4.947s-.014-3.667-.072-4.947c-.153-4.358-2.575-6.78-6.933-6.933C15.667.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zm0 10.162a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 11-2.88 0 1.44 1.44 0 012.88 0z"/>
+          </svg>
+          @nrtyamaytroupe
+        </a>
+
+        <a href="https://facebook.com/komalmadkar" target="_blank" rel="noopener" class="contact-link">
+          <svg class="contact-icon" viewBox="0 0 24 24">
+            <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+          </svg>
+          Komal Madkar
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    © 2026 Komal Madkar – Kathak Artist
+  </footer>
 
 </body>
 </html>
