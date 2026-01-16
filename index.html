@@ -379,7 +379,18 @@
     btn.style.display = "none";
     video.scrollIntoView({ behavior: "smooth" });
   });
+
+    //close button
+    const closeBtn = document.createElement('button');
+closeBtn.textContent = '× Close Video';
+closeBtn.style = 'position:absolute; top:10px; right:10px; background:#000; color:#fff; border:none; padding:0.5rem 1rem; cursor:pointer; z-index:10;';
+video.appendChild(closeBtn);
+closeBtn.addEventListener('click', () => {
+  video.style.display = 'none';
+  btn.style.display = 'block';
+});
 </script>
+
 
 </body>
 </html>
